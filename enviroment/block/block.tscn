@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg8rwpxhxwq22"]
+
+[ext_resource type="Texture2D" uid="uid://v2ho1r2dta4a" path="res://enviroment/block/barra5.png" id="1_oyitt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kf70a"]
+size = Vector2(32, 16)
+
+[node name="block" type="StaticBody2D" groups=["gr_blocks"]]
+collision_layer = 4
+
+[node name="spr_block" type="Sprite2D" parent="."]
+texture = ExtResource("1_oyitt")
+
+[node name="col_block" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kf70a")

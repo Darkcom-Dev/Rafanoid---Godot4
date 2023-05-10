@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://rfyvj15ebb8m"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_xhnq2"]
+[ext_resource type="FontFile" uid="uid://m75eqxlkelwv" path="res://assets/advanced_pixel-7.ttf" id="2_46qwo"]
+[ext_resource type="PackedScene" uid="uid://r250otam5ebo" path="res://interfaces/title_logo.tscn" id="3_ki1pj"]
+[ext_resource type="PackedScene" uid="uid://nif7eqmqjui5" path="res://interfaces/butt_replay.tscn" id="4_2bai1"]
+[ext_resource type="PackedScene" uid="uid://c3mgh5crofy8q" path="res://interfaces/butt_resume.tscn" id="4_y2hek"]
+[ext_resource type="PackedScene" uid="uid://dg4akopa8jwh5" path="res://interfaces/butt_quit.tscn" id="5_75dvt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vgp0"]
+font = ExtResource("2_46qwo")
+font_size = 40
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="pause_menu" type="Node"]
+process_mode = 2
+script = ExtResource("1_xhnq2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = -16.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.0901961, 0.278431, 0.501961)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = -32.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="label_you_lose" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_3vgp0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="title_logo" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_ki1pj")]
+visible = false
+layout_mode = 2
+
+[node name="butt_resume" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_y2hek")]
+layout_mode = 2
+
+[node name="butt_replay" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_2bai1")]
+layout_mode = 2
+
+[node name="butt_quit" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_75dvt")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/butt_resume/butt" to="." method="_on_resume_butt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/butt_replay/butt" to="." method="_on_replay_butt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/butt_quit/butt" to="." method="_on_quit_butt_pressed"]
+
+[editable path="MarginContainer/VBoxContainer/butt_resume"]
+[editable path="MarginContainer/VBoxContainer/butt_replay"]
+[editable path="MarginContainer/VBoxContainer/butt_quit"]

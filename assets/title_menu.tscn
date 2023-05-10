@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhhh4knrwynhd"]
+
+[ext_resource type="Script" path="res://title_menu.gd" id="1_u6j0t"]
+[ext_resource type="Texture2D" uid="uid://lug0j0tfr6fv" path="res://enviroment/background.png" id="2_5c7yf"]
+[ext_resource type="PackedScene" uid="uid://r250otam5ebo" path="res://interfaces/title_logo.tscn" id="3_7sc8s"]
+[ext_resource type="PackedScene" uid="uid://c43dubuixngw8" path="res://interfaces/butt_start.tscn" id="4_dg8gt"]
+[ext_resource type="PackedScene" uid="uid://dg4akopa8jwh5" path="res://interfaces/butt_quit.tscn" id="5_oqq8v"]
+
+[node name="Title_menu" type="Node"]
+script = ExtResource("1_u6j0t")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_5c7yf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = -32.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="title_logo" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_7sc8s")]
+layout_mode = 2
+
+[node name="butt_start" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_dg8gt")]
+layout_mode = 2
+
+[node name="butt_quit" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_oqq8v")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/butt_start/butt" to="." method="_on_start_butt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/butt_quit/butt" to="." method="_on_quit_butt_pressed"]
+
+[editable path="MarginContainer/VBoxContainer/butt_start"]
+[editable path="MarginContainer/VBoxContainer/butt_quit"]

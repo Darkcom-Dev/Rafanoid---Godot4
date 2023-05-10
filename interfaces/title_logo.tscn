@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://r250otam5ebo"]
+
+[ext_resource type="Texture2D" uid="uid://b5op6xlw0dl8t" path="res://icon.png" id="1_tj2r3"]
+[ext_resource type="FontFile" uid="uid://m75eqxlkelwv" path="res://assets/advanced_pixel-7.ttf" id="2_4cfd4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2k0pt"]
+font = ExtResource("2_4cfd4")
+font_size = 52
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ruoc"]
+font = ExtResource("2_4cfd4")
+font_size = 28
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="title_logo" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 128.0
+grow_horizontal = 2
+
+[node name="Texture_icon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_tj2r3")
+expand_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Rafanoid" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Rafanoid"
+label_settings = SubResource("LabelSettings_2k0pt")
+vertical_alignment = 1
+
+[node name="By" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "By Raformatico"
+label_settings = SubResource("LabelSettings_1ruoc")
+horizontal_alignment = 2
+vertical_alignment = 1

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg4akopa8jwh5"]
+
+[ext_resource type="PackedScene" uid="uid://d0p6g2xx0rmwd" path="res://interfaces/butt_parent.tscn" id="1_32hyn"]
+
+[node name="butt_quit" instance=ExtResource("1_32hyn")]
+
+[node name="Label" parent="butt" index="0"]
+text = "QUIT"

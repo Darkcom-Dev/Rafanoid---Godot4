@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://nif7eqmqjui5"]
+
+[ext_resource type="PackedScene" uid="uid://d0p6g2xx0rmwd" path="res://interfaces/butt_parent.tscn" id="1_qi6gk"]
+
+[node name="butt_replay" instance=ExtResource("1_qi6gk")]
+
+[node name="Label" parent="butt" index="0"]
+text = "REPLAY"

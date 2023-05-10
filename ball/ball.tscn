@@ -1,0 +1,82 @@
+[gd_scene load_steps=15 format=3 uid="uid://dhhfnxygv0la1"]
+
+[ext_resource type="Texture2D" uid="uid://cgpgnl8q8pqnl" path="res://ball/bola2-b.png" id="1_f7yvj"]
+[ext_resource type="Script" path="res://ball/ball.gd" id="2_yhwg8"]
+[ext_resource type="AudioStream" uid="uid://cmcwnd4f74bo5" path="res://assets/audio/break.ogg" id="3_u51yq"]
+[ext_resource type="AudioStream" uid="uid://cf1a0vhn42fpw" path="res://assets/audio/hit.wav" id="4_kd1sd"]
+[ext_resource type="AudioStream" uid="uid://jmww2nrfm7vv" path="res://assets/audio/lose.ogg" id="5_s2ayi"]
+[ext_resource type="AudioStream" uid="uid://b738hhb7828nv" path="res://assets/audio/start.wav" id="6_3quy1"]
+[ext_resource type="AudioStream" uid="uid://c28x6dwfiq7jn" path="res://assets/audio/you_win.ogg" id="7_srlo8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h3hc5"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fq74i"]
+radius = 7.0
+
+[sub_resource type="Gradient" id="Gradient_h6a37"]
+colors = PackedColorArray(1, 1, 1, 0.666667, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m5f7b"]
+gradient = SubResource("Gradient_h6a37")
+
+[sub_resource type="Curve" id="Curve_irqlh"]
+_data = [Vector2(0, 0.96319), 0.0, 0.0, 0, 0, Vector2(1, 0.325153), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lebfa"]
+curve = SubResource("Curve_irqlh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5aklp"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_lebfa")
+color_ramp = SubResource("GradientTexture1D_m5f7b")
+
+[node name="ball" type="RigidBody2D"]
+collision_mask = 22
+physics_material_override = SubResource("PhysicsMaterial_h3hc5")
+gravity_scale = 0.0
+max_contacts_reported = 2
+contact_monitor = true
+lock_rotation = true
+linear_damp = -0.1
+script = ExtResource("2_yhwg8")
+metadata/_edit_group_ = true
+
+[node name="spr_ball" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_f7yvj")
+
+[node name="col_ball" type="CollisionShape2D" parent="."]
+texture_filter = 1
+shape = SubResource("CircleShape2D_fq74i")
+
+[node name="break" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_u51yq")
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kd1sd")
+
+[node name="lose" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("5_s2ayi")
+
+[node name="start" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3quy1")
+
+[node name="youwin" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("7_srlo8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+process_material = SubResource("ParticleProcessMaterial_5aklp")
+texture = ExtResource("1_f7yvj")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

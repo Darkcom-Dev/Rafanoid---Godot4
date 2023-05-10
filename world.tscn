@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://cns28k0i6limu"]
+
+[ext_resource type="PackedScene" uid="uid://cwxkskfff518j" path="res://enviroment/Bordes.tscn" id="1_i5jte"]
+[ext_resource type="PackedScene" uid="uid://dhhfnxygv0la1" path="res://ball/ball.tscn" id="2_8smik"]
+[ext_resource type="PackedScene" uid="uid://cwg2mdp03w5t7" path="res://player/player.tscn" id="3_ax3rv"]
+[ext_resource type="PackedScene" uid="uid://d07xmybprtq34" path="res://enviroment/stage_blocks_2d.tscn" id="4_2w0mw"]
+[ext_resource type="AudioStream" uid="uid://qtulay6l3acw" path="res://assets/audio/background.ogg" id="5_jm2a8"]
+[ext_resource type="PackedScene" uid="uid://n7iln3ort2ei" path="res://transicion.tscn" id="6_c438i"]
+
+[node name="World" type="Node2D"]
+
+[node name="Enviroment" parent="." instance=ExtResource("1_i5jte")]
+
+[node name="ball" parent="." instance=ExtResource("2_8smik")]
+position = Vector2(144, 450)
+
+[node name="player" parent="." instance=ExtResource("3_ax3rv")]
+position = Vector2(144, 470)
+ball_node_path = NodePath("../ball")
+
+[node name="Stage_blocks_2D" parent="." instance=ExtResource("4_2w0mw")]
+position = Vector2(32, 56)
+
+[node name="Background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_jm2a8")
+autoplay = true
+
+[node name="Transicion" parent="." instance=ExtResource("6_c438i")]

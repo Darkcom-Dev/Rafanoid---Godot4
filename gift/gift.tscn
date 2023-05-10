@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://co1hye12tnl8b"]
+
+[ext_resource type="Texture2D" uid="uid://n2x5w4glkkdu" path="res://gift/gift-blue.png" id="1_ebkq6"]
+[ext_resource type="Script" path="res://gift/gift.gd" id="1_ul64w"]
+[ext_resource type="Texture2D" uid="uid://beukjid2ltkw8" path="res://gift/gift-green.png" id="2_5o2qu"]
+[ext_resource type="Texture2D" uid="uid://34xjw64boskx" path="res://gift/gift-head.png" id="3_5k0m7"]
+[ext_resource type="Texture2D" uid="uid://ce8sfdaf0binv" path="res://gift/gift-heart.png" id="4_y28t3"]
+[ext_resource type="Texture2D" uid="uid://d16wat4x8uqvl" path="res://gift/gift-key2.png" id="5_5ci4d"]
+[ext_resource type="Texture2D" uid="uid://cy6wcow18alsg" path="res://gift/gift-red.png" id="6_thsc1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqwjt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ebkq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5o2qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5k0m7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y28t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5ci4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_thsc1")
+}],
+"loop": true,
+"name": &"gift",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nti2"]
+radius = 8.0
+
+[node name="gift" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 2
+mass = 0.25
+gravity_scale = 0.5
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("1_ul64w")
+
+[node name="spr_gift_anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wqwjt")
+animation = &"gift"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 4.17233e-07)
+scale = Vector2(0.8, 0.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1nti2")
+
+[connection signal="body_entered" from="." to="." method="_on_gift_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_gift_visible_on_screen_notifier_2d_screen_exited"]

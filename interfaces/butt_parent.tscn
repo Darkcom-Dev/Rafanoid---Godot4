@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0p6g2xx0rmwd"]
+
+[ext_resource type="Texture2D" uid="uid://dkrlqn2g45lgb" path="res://interfaces/Blue Button 1.png" id="1_vuf04"]
+[ext_resource type="Texture2D" uid="uid://dooesa0xpwj4p" path="res://interfaces/Blue Button 2.png" id="2_svpia"]
+[ext_resource type="Texture2D" uid="uid://uxsfu50yxl33" path="res://interfaces/Blue-focus.png" id="3_vmmqu"]
+[ext_resource type="FontFile" uid="uid://m75eqxlkelwv" path="res://assets/advanced_pixel-7.ttf" id="4_12thq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8q5u3"]
+font = ExtResource("4_12thq")
+font_size = 20
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="butt_parent" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="butt" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource("1_vuf04")
+texture_pressed = ExtResource("2_svpia")
+texture_hover = ExtResource("3_vmmqu")
+texture_focused = ExtResource("3_vmmqu")
+
+[node name="Label" type="Label" parent="butt"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Label"
+label_settings = SubResource("LabelSettings_8q5u3")
+horizontal_alignment = 1
+vertical_alignment = 1

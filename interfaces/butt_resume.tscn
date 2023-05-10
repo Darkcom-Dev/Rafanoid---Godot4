@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3mgh5crofy8q"]
+
+[ext_resource type="PackedScene" uid="uid://d0p6g2xx0rmwd" path="res://interfaces/butt_parent.tscn" id="1_ahqbo"]
+
+[node name="butt_resume" instance=ExtResource("1_ahqbo")]
+
+[node name="Label" parent="butt" index="0"]
+text = "RESUME"
